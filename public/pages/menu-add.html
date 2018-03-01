@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>adminui( HTML版）</title>
+    <link rel="stylesheet" href="../static/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/lib/adminui/css/adminui.css">
+    <script type="text/javascript" src="../static/lib/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({base: '../static/js/modules/',version:'20180210'});
+    </script>
+</head>
+<body class="body">
+<form class="layui-form">
+<input type="hidden" value="&#xe6dd;" name="icon" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">图标&名称</label>
+        <div class="layui-inline menu-input-icon" title="选择图标"><i class="adminui-icon">&#xe6dd;</i></div><div class="layui-inline" style="width: 60%">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入菜单名称" autocomplete="off" class="layui-input menu-add-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">链接</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">菜单显示</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="switch" lay-skin="switch">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<span class="icons-box" style="display: none;">
+
+    <div class="menu-icons-select">
+        <!--<input type="text" name="title" placeholder="输入Unicode字符" autocomplete="off" class="layui-input menu-add-input">-->
+        <div>
+            <ul class="">
+                <li>
+                <i class="adminui-icon">&#xe6dd;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6de;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6df;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e0;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e1;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e2;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e3;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e4;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e5;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e6;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e7;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e8;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6e9;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ea;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6eb;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ec;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ed;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ee;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ef;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f0;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f1;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f2;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f3;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f4;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f5;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f6;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f7;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f8;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6f9;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6fa;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6fb;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6fc;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6fd;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6fe;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe6ff;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe700;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe701;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe702;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe703;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe704;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe705;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe706;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe707;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe708;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe709;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70a;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70b;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70c;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70d;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70e;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe70f;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe710;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe711;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe712;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe713;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe714;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe715;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe716;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe717;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe718;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe719;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71a;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71b;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71c;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71d;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71e;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe71f;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe720;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe721;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe722;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe723;</i>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe724;</i>
+                    <div class="name">label_fill</div>
+                    <div class="code">&amp;#xe724;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe725;</i>
+                    <div class="name">like_fill</div>
+                    <div class="code">&amp;#xe725;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe726;</i>
+                    <div class="name">like</div>
+                    <div class="code">&amp;#xe726;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe727;</i>
+                    <div class="name">live_fill</div>
+                    <div class="code">&amp;#xe727;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe728;</i>
+                    <div class="name">live</div>
+                    <div class="code">&amp;#xe728;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe729;</i>
+                    <div class="name">lock_fill</div>
+                    <div class="code">&amp;#xe729;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72a;</i>
+                    <div class="name">lock</div>
+                    <div class="code">&amp;#xe72a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72b;</i>
+                    <div class="name">mail</div>
+                    <div class="code">&amp;#xe72b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72c;</i>
+                    <div class="name">mail_fill</div>
+                    <div class="code">&amp;#xe72c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72d;</i>
+                    <div class="name">manage_fill</div>
+                    <div class="code">&amp;#xe72d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72e;</i>
+                    <div class="name">manage</div>
+                    <div class="code">&amp;#xe72e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe72f;</i>
+                    <div class="name">message</div>
+                    <div class="code">&amp;#xe72f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe730;</i>
+                    <div class="name">message_fill</div>
+                    <div class="code">&amp;#xe730;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe731;</i>
+                    <div class="name">mine</div>
+                    <div class="code">&amp;#xe731;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe732;</i>
+                    <div class="name">mine_fill</div>
+                    <div class="code">&amp;#xe732;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe733;</i>
+                    <div class="name">mobilephone_fill</div>
+                    <div class="code">&amp;#xe733;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe734;</i>
+                    <div class="name">mobilephone</div>
+                    <div class="code">&amp;#xe734;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe735;</i>
+                    <div class="name">more</div>
+                    <div class="code">&amp;#xe735;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe736;</i>
+                    <div class="name">narrow</div>
+                    <div class="code">&amp;#xe736;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe737;</i>
+                    <div class="name">offline_fill</div>
+                    <div class="code">&amp;#xe737;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe738;</i>
+                    <div class="name">offline</div>
+                    <div class="code">&amp;#xe738;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe739;</i>
+                    <div class="name">order_fill</div>
+                    <div class="code">&amp;#xe739;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73a;</i>
+                    <div class="name">order</div>
+                    <div class="code">&amp;#xe73a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73b;</i>
+                    <div class="name">other</div>
+                    <div class="code">&amp;#xe73b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73c;</i>
+                    <div class="name">people_fill</div>
+                    <div class="code">&amp;#xe73c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73d;</i>
+                    <div class="name">people</div>
+                    <div class="code">&amp;#xe73d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73e;</i>
+                    <div class="name">picture_fill</div>
+                    <div class="code">&amp;#xe73e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe73f;</i>
+                    <div class="name">picture</div>
+                    <div class="code">&amp;#xe73f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe740;</i>
+                    <div class="name">play</div>
+                    <div class="code">&amp;#xe740;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe741;</i>
+                    <div class="name">play_fill</div>
+                    <div class="code">&amp;#xe741;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe742;</i>
+                    <div class="name">playon_fill</div>
+                    <div class="code">&amp;#xe742;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe743;</i>
+                    <div class="name">playon</div>
+                    <div class="code">&amp;#xe743;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe744;</i>
+                    <div class="name">praise_fill</div>
+                    <div class="code">&amp;#xe744;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe745;</i>
+                    <div class="name">praise</div>
+                    <div class="code">&amp;#xe745;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe746;</i>
+                    <div class="name">prompt_fill</div>
+                    <div class="code">&amp;#xe746;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe747;</i>
+                    <div class="name">prompt</div>
+                    <div class="code">&amp;#xe747;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe748;</i>
+                    <div class="name">qrcode_fill</div>
+                    <div class="code">&amp;#xe748;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe749;</i>
+                    <div class="name">qrcode</div>
+                    <div class="code">&amp;#xe749;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74a;</i>
+                    <div class="name">redpacket_fill</div>
+                    <div class="code">&amp;#xe74a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74b;</i>
+                    <div class="name">redpacket</div>
+                    <div class="code">&amp;#xe74b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74c;</i>
+                    <div class="name">refresh</div>
+                    <div class="code">&amp;#xe74c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74d;</i>
+                    <div class="name">remind_fill</div>
+                    <div class="code">&amp;#xe74d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74e;</i>
+                    <div class="name">remind</div>
+                    <div class="code">&amp;#xe74e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe74f;</i>
+                    <div class="name">return</div>
+                    <div class="code">&amp;#xe74f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe750;</i>
+                    <div class="name">right</div>
+                    <div class="code">&amp;#xe750;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe751;</i>
+                    <div class="name">scan</div>
+                    <div class="code">&amp;#xe751;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe752;</i>
+                    <div class="name">select_fill</div>
+                    <div class="code">&amp;#xe752;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe753;</i>
+                    <div class="name">select</div>
+                    <div class="code">&amp;#xe753;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe754;</i>
+                    <div class="name">send</div>
+                    <div class="code">&amp;#xe754;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe755;</i>
+                    <div class="name">service_fill</div>
+                    <div class="code">&amp;#xe755;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe756;</i>
+                    <div class="name">service</div>
+                    <div class="code">&amp;#xe756;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe757;</i>
+                    <div class="name">setup_fill</div>
+                    <div class="code">&amp;#xe757;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe758;</i>
+                    <div class="name">setup</div>
+                    <div class="code">&amp;#xe758;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe759;</i>
+                    <div class="name">share_fill</div>
+                    <div class="code">&amp;#xe759;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75a;</i>
+                    <div class="name">share</div>
+                    <div class="code">&amp;#xe75a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75b;</i>
+                    <div class="name">shielding_fill</div>
+                    <div class="code">&amp;#xe75b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75c;</i>
+                    <div class="name">shielding</div>
+                    <div class="code">&amp;#xe75c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75d;</i>
+                    <div class="name">smallscreen_fill</div>
+                    <div class="code">&amp;#xe75d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75e;</i>
+                    <div class="name">smallscreen</div>
+                    <div class="code">&amp;#xe75e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe75f;</i>
+                    <div class="name">stealth_fill</div>
+                    <div class="code">&amp;#xe75f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe760;</i>
+                    <div class="name">stealth</div>
+                    <div class="code">&amp;#xe760;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe761;</i>
+                    <div class="name">success_fill</div>
+                    <div class="code">&amp;#xe761;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe762;</i>
+                    <div class="name">success</div>
+                    <div class="code">&amp;#xe762;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe763;</i>
+                    <div class="name">suspend</div>
+                    <div class="code">&amp;#xe763;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe764;</i>
+                    <div class="name">switch</div>
+                    <div class="code">&amp;#xe764;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe765;</i>
+                    <div class="name">systemprompt_fill</div>
+                    <div class="code">&amp;#xe765;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe766;</i>
+                    <div class="name">systemprompt</div>
+                    <div class="code">&amp;#xe766;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe767;</i>
+                    <div class="name">tailor</div>
+                    <div class="code">&amp;#xe767;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe768;</i>
+                    <div class="name">task</div>
+                    <div class="code">&amp;#xe768;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe769;</i>
+                    <div class="name">task_fill</div>
+                    <div class="code">&amp;#xe769;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76a;</i>
+                    <div class="name">tasklist_fill</div>
+                    <div class="code">&amp;#xe76a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76b;</i>
+                    <div class="name">tasklist</div>
+                    <div class="code">&amp;#xe76b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76c;</i>
+                    <div class="name">text</div>
+                    <div class="code">&amp;#xe76c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76d;</i>
+                    <div class="name">time_fill</div>
+                    <div class="code">&amp;#xe76d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76e;</i>
+                    <div class="name">time</div>
+                    <div class="code">&amp;#xe76e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe76f;</i>
+                    <div class="name">translation_fill</div>
+                    <div class="code">&amp;#xe76f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe770;</i>
+                    <div class="name">translation</div>
+                    <div class="code">&amp;#xe770;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe771;</i>
+                    <div class="name">trash</div>
+                    <div class="code">&amp;#xe771;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe772;</i>
+                    <div class="name">trash_fill</div>
+                    <div class="code">&amp;#xe772;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe773;</i>
+                    <div class="name">undo</div>
+                    <div class="code">&amp;#xe773;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe774;</i>
+                    <div class="name">unlock_fill</div>
+                    <div class="code">&amp;#xe774;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe775;</i>
+                    <div class="name">unlock</div>
+                    <div class="code">&amp;#xe775;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe776;</i>
+                    <div class="name">video</div>
+                    <div class="code">&amp;#xe776;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe777;</i>
+                    <div class="name">video_fill</div>
+                    <div class="code">&amp;#xe777;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe778;</i>
+                    <div class="name">warning_fill</div>
+                    <div class="code">&amp;#xe778;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe779;</i>
+                    <div class="name">warning</div>
+                    <div class="code">&amp;#xe779;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77a;</i>
+                    <div class="name">workbench_fill</div>
+                    <div class="code">&amp;#xe77a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77b;</i>
+                    <div class="name">workbench</div>
+                    <div class="code">&amp;#xe77b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77c;</i>
+                    <div class="name">search</div>
+                    <div class="code">&amp;#xe77c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77d;</i>
+                    <div class="name">search fill</div>
+                    <div class="code">&amp;#xe77d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77e;</i>
+                    <div class="name">qianriu_fill</div>
+                    <div class="code">&amp;#xe77e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe77f;</i>
+                    <div class="name">publish goods_fill</div>
+                    <div class="code">&amp;#xe77f;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe780;</i>
+                    <div class="name">shop_fill</div>
+                    <div class="code">&amp;#xe780;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe781;</i>
+                    <div class="name">transaction_fill</div>
+                    <div class="code">&amp;#xe781;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe782;</i>
+                    <div class="name">packup</div>
+                    <div class="code">&amp;#xe782;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe783;</i>
+                    <div class="name">unfold</div>
+                    <div class="code">&amp;#xe783;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe784;</i>
+                    <div class="name">wangwang_fill</div>
+                    <div class="code">&amp;#xe784;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe785;</i>
+                    <div class="name">financial_fill</div>
+                    <div class="code">&amp;#xe785;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe786;</i>
+                    <div class="name">marketing_fill</div>
+                    <div class="code">&amp;#xe786;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe787;</i>
+                    <div class="name">shake</div>
+                    <div class="code">&amp;#xe787;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe788;</i>
+                    <div class="name">decoration_fill</div>
+                    <div class="code">&amp;#xe788;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe789;</i>
+                    <div class="name">logo</div>
+                    <div class="code">&amp;#xe789;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78a;</i>
+                    <div class="name">logo_fill</div>
+                    <div class="code">&amp;#xe78a;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78b;</i>
+                    <div class="name">questions</div>
+                    <div class="code">&amp;#xe78b;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78c;</i>
+                    <div class="name">supply</div>
+                    <div class="code">&amp;#xe78c;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78d;</i>
+                    <div class="name">tools</div>
+                    <div class="code">&amp;#xe78d;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78e;</i>
+                    <div class="name">int_fill</div>
+                    <div class="code">&amp;#xe78e;</div>
+                </li>
+            
+                <li>
+                <i class="adminui-icon">&#xe78f;</i>
+                    <div class="name">commodity</div>
+                    <div class="code">&amp;#xe78f;</div>
+                </li>
+            
+        </ul>
+        </div>
+    </div>
+</span>
+
+<style>
+
+</style>
+</body>
+</html>
+<script type="text/javascript">
+    layui.use('add', function () {
+        var $ = layui.jquery;
+        $(".menu-input-icon").click(function () {
+            layer.open({
+                title:false,
+                type: 1,
+                shade:0,
+                content: $('.icons-box'),
+                area:['225px','200px']
+            });
+        });
+        
+        $(".menu-icons-select ul li i").click(function () {
+            $("input[name='icon']").val($(this).html());
+            $(".menu-input-icon i").html($(this).html());
+        })
+    });
+</script>

@@ -1,0 +1,69 @@
+{include file="../public/header.html"}
+<style>.body {padding: 0; margin: 0;}</style>
+<div class="menu-index">
+    <div class="aside">
+        <div class="aside-title">顶部菜单</div>
+        <div class="aside-section">
+            <ul class="aside-list">
+                {foreach from=$list item=item}
+                <li class="{if $item.id==$current.id}active{/if}" draggable="false"><a href="/system/menu/?id={$item.id}"><i class="adminui-icon">{$item.icon}</i> <span>{$item.name}</span></a>
+                    <span class="item-actions">
+                        <span title="编辑" class="layer-open" w="500px" h="400px" data-url="/system/menu/add/?id={$item.id}"><i class="layui-icon">&#xe642;</i></span>
+                        <span title="删除" class="delete" data-url="/system/menu/del/?id={$item.id}"><i class="layui-icon">&#xe640;</i></span>
+                    </span>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        <div class="aside-line"></div>
+        <div class="aside-footer">
+            <ul class="aside-list">
+                <li class="layer-open" w="500px" h="400px" data-url="/system/menu/add"><i class="layui-icon">&#xe654;</i> <span>添加顶部菜单</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <ol class="dd-list">
+            <li class="dd-item">
+                <div class="dd-content"><span class="menu-name"><i class="adminui-icon">{$current.icon}</i>&nbsp;  {$current.name}</span>
+                    <span class="item-actions">
+                        <span title="添加子菜单" class="layer-open" w="500px" h="400px" data-url="/system/menu/add?parent_id={$current.id}"> <i class="layui-icon">&#xe654;</i></span>
+                    </span>
+                </div>
+                <ol class="dd-list">
+                    <div>
+                        {foreach from=$sub item=item}
+                        <li class="dd-item">
+                            <div class="dd-content"><span class="menu-name"><i class="adminui-icon">{$item.icon}</i>&nbsp;  {$item.name}</span>
+                                <span class="item-actions">
+                                    <span title="添加子菜单" class="layer-open" w="500px" h="400px" data-url="/system/menu/add?parent_id={$item.id}"> <i class="layui-icon">&#xe654;</i></span>
+                                    <span title="编辑" class="layer-open" w="500px" h="400px" data-url="/system/menu/add/?id={$item.id}"><i class="layui-icon">&#xe642;</i></span>
+                                    <span title="删除" class="delete" data-url="/system/menu/del/?id={$item.id}"><i class="layui-icon">&#xe640;</i></span>
+                                </span>
+                            </div>
+                            <ol class="dd-list">
+                                {foreach from=$item.sub item=sub}
+                                <li class="dd-item">
+                                    <div class="dd-content"><span class="menu-name"><i class="adminui-icon">{$sub.icon}</i>&nbsp; {$sub.name}</span>
+                                        <span class="item-actions">
+                                            <span title="编辑" class="layer-open" w="500px" h="400px" data-url="/system/menu/add/?id={$sub.id}"><i class="layui-icon">&#xe642;</i></span>
+                                            <span title="删除" class="delete" data-url="/system/menu/del/?id={$sub.id}"><i class="layui-icon">&#xe640;</i></span>
+                                        </span>
+                                    </div>
+                                </li>
+                                {/foreach}
+                            </ol>
+                        </li>
+                        {/foreach}
+
+
+                    </div>
+                </ol>
+            </li>
+        </ol>
+    </div>
+</div>
+{include file="../public/footer.html"}
+
+
+
