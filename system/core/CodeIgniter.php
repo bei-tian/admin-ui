@@ -61,9 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *  Load the config
  * ------------------------------------------------------
  */
-if (file_exists((PHP_OS == 'WINNT' ? 'C:/' : '/etc/').'trjcn_config.conf')) {
-	require_once((PHP_OS == 'WINNT' ? 'C:/' : '/etc/').'trjcn_config.conf');
-}
+
 /*
  * ------------------------------------------------------
  *  Load the framework constants

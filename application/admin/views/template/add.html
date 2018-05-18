@@ -1,0 +1,68 @@
+{include file="public/header.html"}
+<body class="fn-pt-20">
+<form class="layui-form layui-form-add" action="{$template.action}" action="POST">
+	{foreach from=$template.fields item=field}
+	{if $field.type == 'hidden'}
+	<input type="hidden" name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" />
+	{else}
+		<div class="layui-form-item">
+			<label class="layui-form-label">{if $field.verify == 'required'}<span class="promit">*</span>{/if}{$field.title}：</label>
+			<div class="layui-input-inline">
+				{if $field.type == 'radio'}
+				{foreach from=$field.options item=option}
+				<input type="radio" name="{$field.field}" value="{$option.value}" title="{$option.title}" {if $option.value == $item[$field.field]}checked{/if} />
+				{/foreach}
+				{elseif $field.type == 'checkbox'}
+				{foreach from=$field.options item=option}
+				<input type="checkbox" name="{$field.field}" value="{$option.value}" title="{$option.title}" />
+				{/foreach}
+				{elseif $field.type == 'select'}
+				<select name="{$field.field}" lay-verify="required">
+					<option value=""></option>
+					{foreach from=$field.options item=option}
+					<option value="{$option.value}" {if $option.value==$item[$field.field]}selected{/if}>{$option.title}</option>
+					{/foreach}
+				</select>
+				{elseif $field.type == 'textarea'}
+				<textarea name="{$field.field}" class="layui-textarea" lay-verify="{$field.verify}">{$item[$field.field]}</textarea>
+				{elseif $field.type == 'upload'}
+				<button type="button" class="layui-btn layui-upload" field-name="{$field.field}" data-size="100" data-exts="" data-accept=""><i class="layui-icon">&#xe61f;</i>上传文件</button>
+				<div class="layui-inline layui-word-aux">{if $field.size}{$field.size}以内{/if}</div>
+				<input type="hidden" name="{$field.field}" value="" lay-verify="{$field.verify}">
+				<div class="layui-inline layui-upload-img fn-pt-10"></div>
+				{elseif $field.type == 'tpl'}
+				<?php echo $this->_var['field']['tpl']($this->_var['item']); ?>
+				{else}
+				<input type="{$field.type}"  name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" class="layui-input">
+				{/if}
+			</div>
+		</div>
+	{/if}
+	{/foreach}
+	<div class="layui-form-item">
+		<div class="layui-input-block">
+			<button class="layui-btn" lay-submit="" lay-filter="form">立即提交</button>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+    layui.use('form', function(){
+        var form = layui.form;
+        form.on('submit(form)', function(data){
+            $(data.elem).addClass('layui-btn-disabled').prop('disabled',true);
+            $.post("{$template.action}",data.field,function(res){
+                $(data.elem).removeClass('layui-btn-disabled').prop('disabled',false);
+                if (res.code=='200') {
+                    layer.msg("保存成功！");
+                    top.layui.jquery(".iframepage:visible")[0].contentWindow.layui.jquery("#refresh").click();
+                    top.layui.layer.closeAll();
+                } else {
+                    layer.msg(f_get_msg(res), {icon: 5,shift: 6});
+                }
+            },'json')
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
