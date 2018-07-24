@@ -27,4 +27,15 @@ class Account extends Admin {
         ];
     }
 
+    function password() {
+        if($this->is_post()) {
+            $data['password'] = md5(md5($this->post('password'))."DI389K23K21K403L2GS2");
+            D("admin")->save($data,['id'=>$_SESSION['admin_id']]);
+            $this->success();
+        } else {
+            $this->display();
+        }
+
+    }
+
 }

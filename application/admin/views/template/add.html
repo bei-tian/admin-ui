@@ -53,7 +53,7 @@
             $.post("{$template.action}",data.field,function(res){
                 $(data.elem).removeClass('layui-btn-disabled').prop('disabled',false);
                 if (res.code=='200') {
-                    layer.msg("保存成功！");
+                    top.layui.layer.msg("保存成功！");
                     top.layui.jquery(".iframepage:visible")[0].contentWindow.layui.jquery("#refresh").click();
                     top.layui.layer.closeAll();
                 } else {
