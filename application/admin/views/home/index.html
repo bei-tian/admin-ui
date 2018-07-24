@@ -19,20 +19,20 @@
 
 
         <!-- 顶部右侧添加选项卡监听 -->
+        <ul class="layui-nav my-header-user-nav">
+            <li class="layui-nav-item">
+                <a class="name" href="javascript:;"> {$account} </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/login/logout/"><i class="layui-icon">&#x1006;</i>退出</a></dd>
+                </dl>
+            </li>
+        </ul>
         <ul class="layui-nav my-header-user-nav" lay-filter="side-top-right">
             <li class="layui-nav-item">
                 <a class="name" href="javascript:;"><i class="layui-icon">&#xe629;</i>主题</a>
                 <dl class="layui-nav-child">
                     <dd data-theme="default"><a href="javascript:;">默认</a></dd>
                     <dd data-theme="blue"><a href="javascript:;">蓝白</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item">
-                <a class="name" href="javascript:;"> Admin </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;" data-href="pages/login.html"><i class="layui-icon">&#xe621;</i>登录页</a></dd>
-                    <dd><a href="javascript:;" data-href="pages/map.html"><i class="layui-icon">&#xe621;</i>图表</a></dd>
-                    <dd><a href="/"><i class="layui-icon">&#x1006;</i>退出</a></dd>
                 </dl>
             </li>
         </ul>

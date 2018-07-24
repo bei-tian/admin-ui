@@ -30,6 +30,7 @@ class Login extends Common {
 	}
 
 	function logout(){
+	    session_start();
 		session_destroy();
 		header("location:/login");
 	}

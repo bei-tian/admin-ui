@@ -8,7 +8,7 @@
             <select name="role_id" lay-verify="required">
                 <option value="">请选择</option>
                 {foreach from=$role item=roleItem}
-                <option value="{$roleItem.id}" {if $roleItem.id == $item.id}selected{/if}>{$roleItem.name}</option>
+                <option value="{$roleItem.id}" {if $roleItem.id == $item.role_id}selected{/if}>{$roleItem.name}</option>
                 {/foreach}
             </select>
         </div>

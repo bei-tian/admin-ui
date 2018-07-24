@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends Admin {
 	function index() {
-
+        $data['account'] = $_SESSION['admin_account'];
+        $this->display($data);
         $this->display();
 	}
 
