@@ -5,23 +5,19 @@ class Upload extends Common
 {
     function index()
     {
-        $res['code'] = 0;
-        $res['msg'] = '';
+
 
         $base = './uploads/';
         if (@$_FILES['file']['size'] < 5) {
-            $res['code'] = -1;
-            $res['msg'] = '请选择文件';
+            $this->err('未选择文件');
         }
         $ext = strtolower(end(explode('.', $_FILES['file']['name'])));
         if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
-            $res['code'] = -1;
-            $res['msg'] = '不允许上传的文件格式';
+            $this->err('不允许上传的文件格式');
         }
 
         if ($_FILES['file']['size'] > 10 * 1024 * 1024) {
-            $res['code'] = -1;
-            $res['msg'] = '文件大小不能超过10M';
+            $this->err('文件大小不能超过10M');
         }
 
         //创建日期文件夹
@@ -30,13 +26,40 @@ class Upload extends Common
 
         $filePath = $base . $date . "/" . date('His') . "." . $ext;
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+            $res['code'] = 0;
+            $res['msg'] = '';
             $res['src'] = str_replace($base, '', $filePath);
+            echo json_encode($res);
         } else {
-            $res['code'] = -1;
-            $res['msg'] = '文件上传失败！';
+            $this->err('文件上传失败');
         };
+    }
 
+    //html5上传
+    function xheditor() {
+        $base = './uploads/xheditor/';
+        preg_match('/attachment;\s+name="(.+?)";\s+filename="(.+?)"/i',$_SERVER['HTTP_CONTENT_DISPOSITION'],$info);
+        $fileName = $info[2];
+        $ext = strtolower(end(explode('.', $fileName)));
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+            $this->err('不允许上传的文件格式');
+        }
+
+        $date = date("Y-m-d");
+        @mkdir($base . $date, 0777);
+        $filePath = $base . $date . "/" . date('His') . "." . $ext;
+        file_put_contents($filePath,file_get_contents("php://input"));
+        $res['err'] = '';
+        $res['msg'] = str_replace('./', '/', $filePath);
         echo json_encode($res);
+    }
+
+    private function err($msg) {
+        $res['code'] = -1;
+        $res['err'] = $msg;
+        $res['msg'] = $msg;
+        echo json_encode($res);
+        exit;
     }
 
 }
