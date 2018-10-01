@@ -26,7 +26,7 @@ class Upload extends Common
 
         $filePath = $base . $date . "/" . date('His') . "." . $ext;
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
-            $res['code'] = 0;
+            $res['code'] = 1;
             $res['msg'] = '';
             $res['src'] = str_replace($base, '', $filePath);
             echo json_encode($res);

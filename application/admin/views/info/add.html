@@ -10,8 +10,11 @@
         <div class="layui-input-block" style="width:20%">
             <select name="cate_id" lay-verify="required">
                 <option value="">选择分类</option>
-                {foreach from=$cate_list item=cate}
+                {foreach from=$cate item=cate}
                 <option value="{$cate.id}" {if $cate.id== $item.cate_id}selected{/if}>{$cate.name}</option>
+                {foreach from=$cate.sub item=subCate}
+                    <option value="{$subCate.id}" {if $subCate.id== $item.cate_id}selected{/if}>   　 {$subCate.name}</option>
+                {/foreach}
                 {/foreach}
             </select>
         </div>
@@ -43,6 +46,7 @@
         <div class="layui-input-block" style="width:80%">
             <input type="hidden" name="img" id="uploaded-file"/>
             {include file="../public/upload.html"}
+            <span id="uploaded-link"><a href="/uploads/{$item.img}" target="_blank">{$item.img}</a></span>
         </div>
     </div>
     <br>
@@ -50,7 +54,6 @@
     <div class="layui-form-item ">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>

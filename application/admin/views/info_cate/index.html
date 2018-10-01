@@ -10,39 +10,39 @@
     </form>
 </blockquote>
 
+<div class="menu-index">
+    <div class="content" style="margin-left: 0; padding: 0">
+        {foreach from=$list item=item}
+        <ol class="dd-list">
+            <li class="dd-item">
+                <div class="dd-content"><span class="menu-name">  {$item.name}</span>
+                    <span class="item-actions">
+                        <span title="添加子菜单" class="layer-open" w="500px" h="400px" data-url="/info_cate/add?parent_id={$item.id}"> <i class="layui-icon">&#xe654;</i></span>
+                        <span title="编辑" class="layer-open" w="500px" h="400px" data-url="/info_cate/add/?id={$item.id}"><i class="layui-icon">&#xe642;</i></span>
+                        <span title="删除" class="delete" data-url="/info_cate/del/?id={$item.id}"><i class="layui-icon">&#xe640;</i></span>
+                    </span>
+                </div>
+                <ol class="dd-list">
+                    <div>
+                        {foreach from=$item.sub item=item}
+                        <li class="dd-item">
+                            <div class="dd-content"><span class="menu-name"> {$item.name}</span>
+                                <span class="item-actions">
+                                    <span title="编辑" class="layer-open" w="500px" h="400px" data-url="/info_cate/add/?id={$item.id}"><i class="layui-icon">&#xe642;</i></span>
+                                    <span title="删除" class="delete" data-url="/info_cate/del/?id={$item.id}"><i class="layui-icon">&#xe640;</i></span>
+                                </span>
+                            </div>
+                        </li>
+                        {/foreach}
 
-<table class="layui-table">
-    <thead>
-    <tr class="table-head ">
-        <th width="30">ID</th>
-        <th>名称</th>
-        <th width="200">创建时间</th>
-        <th width="200">操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    {foreach from=$list item=item}
-    <tr>
-        <td>{$item.id}</td>
-        <td>{$item.name}</td>
-        <td>{$item.create_time}</td>
-        <td>
-            <a class="layui-btn  layui-btn-sm layer-open" w="500px" h="400px"  data-url="/info_cate/add?id={$item.id}">编辑</a>
-            <a class="layui-btn layui-btn-sm layui-btn-danger delete"  data-url="/info_cate/del?id={$item.id}">删除</a>
-        </td>
-    </tr>
-    {/foreach}
-    </tbody>
-</table>
-<div class="adminui-page" id="page" count="{$count}"></div>
 
-
-<script type="text/javascript">
-    layui.use(['list'], function(){
-
-    });
-
-</script>
+                    </div>
+                </ol>
+            </li>
+        </ol>
+        {/foreach}
+    </div>
+</div>
 
 {include file="../public/footer.html"}
 

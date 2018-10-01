@@ -1,7 +1,18 @@
 {include file="../public/header.html"}
 <form class="layui-form " method="post">
     <input type="hidden" name="id" value="{$item.id}">
-    <div class="layui-form-item  on-selected">
+    <div class="layui-form-item ">
+        <label class="layui-form-label layui-input-required">所属分类</label>
+        <div class="layui-input-block" style="width:50%">
+            <select name="parent_id">
+                <option value="">选择父分类</option>
+                {foreach from=$parent item=cate}
+                <option value="{$cate.id}" {if $cate.id== $item.parent_id} selected {/if}>{$cate.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item ">
         <label class="layui-form-label layui-input-required">名称</label>
         <div class="layui-input-block" style="width:50%">
             <input type="text" name="name" value="{$item.name}" lay-verify="required" autocomplete="off" class="layui-input form-item">
@@ -12,7 +23,6 @@
     <div class="layui-form-item ">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
     </div>
 </form>

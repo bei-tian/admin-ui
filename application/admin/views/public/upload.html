@@ -1,15 +1,20 @@
 <button type="button" class="layui-btn" id="upload">
     <i class="layui-icon">&#xe67c;</i>上传文件
 </button>
-<span id="uploaded-link"></span>
+
 <script>
     layui.use('upload', function () {
         layui.upload.render({
             elem: '#upload' //绑定元素
             , url: '/upload/' //上传接口
             , done: function (res) {
-                $("#uploaded-file").val(res.src);
-                $("#uploaded-link").html('<a href="/uploads/' + res.src + '" target="_blank">' + res.src + '</a>');
+                if(res.code == 1) {
+                    $("#uploaded-file").val(res.src);
+                    $("#uploaded-link").html('<a href="/uploads/' + res.src + '" target="_blank">' + res.src + '</a>');
+                } else {
+                    alert(res.msg)
+                }
+
             }
         });
     });

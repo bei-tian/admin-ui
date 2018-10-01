@@ -6,14 +6,18 @@ class Info extends Curd {
 		parent::__construct();
 
 		$this->conf['index'] = [
-            'search'=> ['account-like'],
+            'search'=> ['title-like'],
 		];
-
 		$this->conf['add'] = [
 			'endFunc' => function (&$data) {
-				$data['cate_list'] = D("info_cate")->getList();
+				$data['cate'] = M("infoCate")->getTree(0);
 			}
 		];
+        $this->conf['save'] = [
+            'startFunc'=> function(&$post) {
+                unset($post['file']);
+            }
+        ];
 
 	}
 
