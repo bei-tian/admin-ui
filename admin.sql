@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : localhost_3306
 Source Server Version : 50505
 Source Host           : localhost:3306
-Source Database       : admin-ui
+Source Database       : dzstudy
 
 Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2018-03-01 18:08:45
+Date: 2018-10-01 12:46:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `admin`
+-- Table structure for admin
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
@@ -35,7 +35,7 @@ INSERT INTO `admin` VALUES ('1', '1', 'admin', '7c6c9647c39b4c9d9504281231a01568
 INSERT INTO `admin` VALUES ('6', '2', 'test', 'ca23a2d45c4362a23bb957c3054fa496', '2018-02-24 17:11:56');
 
 -- ----------------------------
--- Table structure for `admin_role`
+-- Table structure for admin_role
 -- ----------------------------
 DROP TABLE IF EXISTS `admin_role`;
 CREATE TABLE `admin_role` (
@@ -54,7 +54,7 @@ INSERT INTO `admin_role` VALUES ('2', '普通员工12', '1,70,71,6,11,12,72,73',
 INSERT INTO `admin_role` VALUES ('4', '销售专员', '11,12,14,15,69', null);
 
 -- ----------------------------
--- Table structure for `info`
+-- Table structure for info
 -- ----------------------------
 DROP TABLE IF EXISTS `info`;
 CREATE TABLE `info` (
@@ -77,11 +77,12 @@ INSERT INTO `info` VALUES ('4', '2', '公告公告公告', null, '公告公告�
 INSERT INTO `info` VALUES ('5', '2', '公告公告公告', null, '公告公告公告公告公告公告', '2017-05-11 14:47:27');
 
 -- ----------------------------
--- Table structure for `info_cate`
+-- Table structure for info_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `info_cate`;
 CREATE TABLE `info_cate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT '0',
   `name` varchar(100) DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -90,11 +91,11 @@ CREATE TABLE `info_cate` (
 -- ----------------------------
 -- Records of info_cate
 -- ----------------------------
-INSERT INTO `info_cate` VALUES ('1', '基本信息', '2016-09-22 08:41:31');
-INSERT INTO `info_cate` VALUES ('2', '公告信息', '2017-05-11 14:22:18');
+INSERT INTO `info_cate` VALUES ('1', '0', '基本信息', '2016-09-22 08:41:31');
+INSERT INTO `info_cate` VALUES ('2', '0', '公告信息', '2017-05-11 14:22:18');
 
 -- ----------------------------
--- Table structure for `menu`
+-- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (

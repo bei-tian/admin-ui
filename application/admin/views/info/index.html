@@ -3,6 +3,17 @@
     <form class="layui-form">
         <div class="layui-inline">
             <div class="layui-input-inline">
+                <select name="cate_id" lay-verify="required">
+                    <option value="">选择分类</option>
+                    {foreach from=$cate item=cate}
+                    <option value="{$cate.id}" disabled {if $cate.id== $smarty.get.cate_id}selected{/if}>{$cate.name}</option>
+                    {foreach from=$cate.sub item=subCate}
+                    <option value="{$subCate.id}" {if $subCate.id== $smarty.get.cate_id}selected{/if}>   　 {$subCate.name}</option>
+                    {/foreach}
+                    {/foreach}
+                </select>
+            </div>
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input searchVal" placeholder="标题" name="title-like" value="{$smarty.get.title-like}" />
             </div>
             <button class="layui-btn search_btn" type="submit"><i class="layui-icon">&#xe615;</i>搜索</button>
@@ -30,7 +41,7 @@
     <tr>
         <td>{$item.id}</td>
         <td>{$item.title}</td>
-        <td>{$item.cate_id|getValue:'info_cate','name'}</td>
+        <td>{$item.cate}</td>
         <td>{$item.create_time}</td>
         <td>
             <a class="layui-btn  layui-btn-sm layer-open"  data-url="/info/add?id={$item.id}">编辑</a>
