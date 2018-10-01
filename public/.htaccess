@@ -2,5 +2,5 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 
-RewriteCond $1 !^(admin\.php|images|robots\.txt)
-RewriteRule ^(.*)$ admin.php/$1 [L]
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]

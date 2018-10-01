@@ -107,7 +107,13 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = '../application/admin';
+    $app = current(explode('.',$_SERVER['SERVER_NAME']));
+    if ($app == 'admin') {
+        $application_folder = '../application/admin';
+    } else {
+        $application_folder = '../application/home';
+    }
+
 
 /*
  *---------------------------------------------------------------
