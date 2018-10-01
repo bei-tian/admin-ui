@@ -1,0 +1,39 @@
+{include file="../public/header.html"}
+
+<form class="layui-form" method="post" >
+    <input type="hidden" name="id" value="{$item.id}" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属角色</label>
+        <div class="layui-input-inline" style="width: 60%">
+            <select name="role_id" lay-verify="required">
+                <option value="">请选择</option>
+                {foreach from=$role item=roleItem}
+                <option value="{$roleItem.id}" {if $roleItem.id == $item.role_id}selected{/if}>{$roleItem.name}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+
+        <div class="layui-input-inline" style="width: 60%">
+            <input type="text" name="account" autocomplete="off" lay-verify="required" class="layui-input" value="{$item.account}">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="*">立即提交</button>
+        </div>
+    </div>
+</form>
+
+{include file="../public/footer.html"}
