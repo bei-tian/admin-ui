@@ -58,7 +58,6 @@ class Readme extends Admin_Controller {
         //自定义表单页模板操作
         $this->conf['add'] = [
             'template'=>[
-                'action'=> '/fx/fx_level/save',
                 'fields'=> [
                     ['field'=>'id','type'=>'hidden'],
                     ['field'=>'name','title'=>'名称','verify'=>'required','type'=>'text'],

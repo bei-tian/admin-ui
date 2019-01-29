@@ -1,21 +1,23 @@
 layui.define(['layer','form'], function (exports) {
     window.$ = layui.jquery;
 
-    //弹出一个窗口
-    $('.layer-open').click(function(){
-        var title = $(this).attr('title');
-        if(!title) {
-            title = $(this).html();
-        }
-        var width = $(this).attr('w') || '1000px';
-        var height = $(this).attr('h') || '600px';
-        var url = $(this).data('url');
+    window.layerOpen = function(url, width, height, title) {
+        width = width || '1000px';
+        height = height || '600px';
         parent.layer.open({
             type: 2,
             title: title,
             area: [width, height], //宽高
             content: url
         });
+    };
+
+    //弹出一个窗口
+    $('.layer-open').click(function(){
+        var title = $(this).attr('title');
+        if(!title) title = $(this).html();
+
+        layerOpen($(this).data('url'), $(this).attr('w'), $(this).attr('h'), title);
         return false;
     });
 

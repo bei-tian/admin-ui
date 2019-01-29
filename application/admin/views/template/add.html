@@ -50,7 +50,7 @@
         var form = layui.form;
         form.on('submit(form)', function(data){
             $(data.elem).addClass('layui-btn-disabled').prop('disabled',true);
-            $.post("{$template.action}",data.field,function(res){
+            $.post("/{$base_url}/save",data.field,function(res){
                 $(data.elem).removeClass('layui-btn-disabled').prop('disabled',false);
                 if (res.code=='200') {
                     top.layui.layer.msg("保存成功！");

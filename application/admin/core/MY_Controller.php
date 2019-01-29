@@ -12,6 +12,7 @@ class Common extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
 
+        $this->view->assign('base_url',  $this->router->directory.$this->router->fetch_class());
 	}
 
 	function display($view='',$data=[]) {
@@ -552,23 +553,22 @@ class Admin extends Curd {
         }
 
         //验证操作权限
-        $controller = $this->router->class;
-        $url = $controller.'/';
-        if($this->router->directory) {
-            $url = '/'.$this->router->directory.$url;
-        }
+        $url = $controller = $this->router->class;
+        if($this->router->directory) $url = '/'.$this->router->directory.$url;
+        $url = '/'.trim($url, '/').'/';
         if(!in_array($controller,['home'])) {
             $privilege = D("admin_role")->getValue($_SESSION['role_id'],'privilege');
             $menu = D("menu")->getOne(['url'=>$url]);
+
             if($menu and in_array($menu['id'],explode(',',$privilege))) {
                 $arr = explode(',', $menu['privilege']);
                 if($menu['privilege'] != '*' and !in_array($this->router->method,$arr)) {
-                    echo '您无操作权限！';
+                    echo '您无操作权限1！';
                     die;
                 }
                 //'有权限';
             } else {
-                echo '您无操作权限！';
+                echo '您无操作权限2！';
                 die;
             }
         }
