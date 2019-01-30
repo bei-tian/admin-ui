@@ -13,11 +13,11 @@ class Readme extends Admin_Controller {
         $this->conf['index'] = [
             'template' => [
                 'cols'=>"[[
-                    {type:'checkbox', fixed: 'left'}
-                    ,{field: 'id', title: 'ID', width:80,fixed: 'left'}
-                    ,{field: 'name', title: '等级名称'}
-                    ,{field: 'create_time', title: '创建时间'}
-                    ,{fixed: 'right',title: '操作', width:150, align:'center', toolbar: '#operator'}
+                    {type:'checkbox'},
+                    {field: 'id', title: 'ID', width:60},
+                    {field: 'name', title: '名称'},
+                    {field: 'create_time', title: '创建时间',width:180},
+                    {fixed: 'right',title: '操作', width:120, toolbar: '#operator'}
                 ]]",
                 'area' => ['500px','300px']
             ],
@@ -28,11 +28,11 @@ class Readme extends Admin_Controller {
         $this->conf['index'] = [
             'template' => [
                 'cols'=>"[[ //表头
-                    {type:'checkbox', fixed: 'left'}
-                    ,{field: 'id', title: 'ID', width:80,fixed: 'left'}
-                    ,{field: 'name', title: '等级名称'}
-                    ,{field: 'create_time', title: '创建时间'}
-                    ,{fixed: 'right',title: '操作', width:150, align:'center', toolbar: '#operator2'}
+                    {type:'checkbox'},
+                    {field: 'id', title: 'ID', width:60},
+                    {field: 'name', title: '名称'},
+                    {field: 'create_time', title: '创建时间',width:180},
+                    {fixed: 'right',title: '操作', width:150, align:'center', toolbar: '#operator2'}
                 ]]",
                 'area' => ['500px','300px'],
                 'html'=>'<script type="text/html" id="operator2">

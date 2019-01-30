@@ -103,7 +103,6 @@ class Curd extends Common
 
     /**
      * 列表页
-     * @param array $conf
      */
     function index() {
         $conf = [];
@@ -147,7 +146,7 @@ class Curd extends Common
 
         //搜索条件 | 一维无键值数组
         if ($conf['search']) {
-            $search = $conf['search'];
+            $data['search'] = $search = $conf['search'];
             foreach ($search as $value) {
                 $preg_alias = '';
                 if (strpos($value, '.') !== false) {
