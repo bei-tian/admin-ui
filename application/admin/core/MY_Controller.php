@@ -473,8 +473,13 @@ class Curd extends Common
             $this->conf['save']['endFunc']($id);
         }
 
+        if ($this->input->is_ajax_request()) {
+            $json['code'] = 0;
+            $this->view->json($json);
+        } else {
+            $this->saveOk();
+        }
 
-        $this->saveOk();
     }
 
 

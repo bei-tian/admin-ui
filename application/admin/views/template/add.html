@@ -28,9 +28,9 @@
 				{elseif $field.type == 'upload'}
 					<button type="button" class="layui-btn layui-upload" field-name="{$field.field}" data-size="100" data-exts="" data-accept=""><i class="layui-icon">&#xe61f;</i>上传文件</button>
 					<div class="layui-inline layui-word-aux">{if $field.size}{$field.size}以内{/if}</div>
-					<input type="hidden" name="{$field.field}" value="" lay-verify="{$field.verify}" id="uploaded-file">
+					<input type="hidden" name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" id="uploaded-file">
 					<br>
-					<span id="uploaded-link"></span>
+					<span id="uploaded-link"><a href="/uploads/{$item[$field.field]}" target="_blank">{$item[$field.field]}</a></span>
 				{elseif $field.type == 'tpl'}
 					<?php echo $this->_var['field']['tpl']($this->_var['item']); ?>
 				{else}
@@ -51,11 +51,12 @@
         var form = layui.form;
         form.on('submit(form)', function(data){
             $(data.elem).addClass('layui-btn-disabled').prop('disabled',true);
+            delete data.field.file;
             $.post("/{$base_url}/save",data.field,function(res){
                 $(data.elem).removeClass('layui-btn-disabled').prop('disabled',false);
-                if (res.code=='200') {
+                if (res.code==0) {
                     top.layui.layer.msg("保存成功！");
-                    top.layui.jquery(".iframepage:visible")[0].contentWindow.layui.jquery("#refresh").click();
+                    top.layui.jquery(".layui-show iframe")[0].contentWindow.location.reload();
                     top.layui.layer.closeAll();
                 } else {
                     layer.msg(f_get_msg(res), {icon: 5,shift: 6});
