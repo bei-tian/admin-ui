@@ -56,7 +56,7 @@
                 $(data.elem).removeClass('layui-btn-disabled').prop('disabled',false);
                 if (res.code==0) {
                     top.layui.layer.msg("保存成功！");
-                    top.layui.jquery(".layui-show iframe")[0].contentWindow.location.reload();
+                    top.layui.jquery(".layui-show iframe")[0].contentWindow.layui.jquery("#refresh").click();
                     top.layui.layer.closeAll();
                 } else {
                     layer.msg(f_get_msg(res), {icon: 5,shift: 6});
