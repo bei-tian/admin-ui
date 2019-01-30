@@ -59,9 +59,11 @@ class Readme extends Admin_Controller {
         $this->conf['add'] = [
             'template'=>[
                 'fields'=> [
-                    ['field'=>'id','type'=>'hidden'],
-                    ['field'=>'name','title'=>'名称','verify'=>'required','type'=>'text'],
-                    ['title'=>'模板名','type'=>'tpl','tpl'=>function(&$item) {
+                    ['type'=>'hidden','field'=>'id'],
+                    ['type'=>'text', 'field'=>'name','title'=>'名称','verify'=>'required'],
+                    ['type'=>'text', 'field'=>'total','title'=>'集数', 'width'=>20],
+                    ['type'=>'upload', 'field'=>'cover','title'=>'封面图'],
+                    ['type'=>'tpl', 'title'=>'模板名','tpl'=>function(&$item) {
                         return '<input type="text"  name="test-tpl" value="'.$item['name'].'"  class="layui-input">';
                     }],
                 ]
