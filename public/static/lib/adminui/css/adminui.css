@@ -638,3 +638,7 @@ html body .layui-nav .layui-nav-bar {
 
 
 .adminui-page { text-align: right;}
+
+.layui-table-page {
+    text-align: right;
+}
