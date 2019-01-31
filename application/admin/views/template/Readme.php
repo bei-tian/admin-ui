@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Readme extends Admin_Controller {
+class Readme extends Admin {
 
     public function __construct() {
         parent::__construct();
