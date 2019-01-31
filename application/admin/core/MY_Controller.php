@@ -116,6 +116,7 @@ class Curd extends Common
         $conf = $conf ? $conf : $this->conf['index'];
 
         $data = [];
+        $data['fields'] = $this->conf['fields'];
 
         //开始钩子函数
         if ($conf['startFunc']) {
@@ -288,7 +289,6 @@ class Curd extends Common
         if ($conf['endFunc']) {
             $conf['endFunc']($data);
         }
-
 
         /*
 		 * 使用公共模板生成列表页

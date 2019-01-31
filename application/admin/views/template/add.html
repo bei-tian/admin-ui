@@ -1,40 +1,40 @@
 {include file="public/header.html"}
 <body class="fn-pt-20">
 <form class="layui-form layui-form-add" action="{$template.action}" action="POST" style="padding: 15px; width: 90%;">
-	{foreach from=$template.fields item=field}
+	{foreach from=$template.fields key=key item=field}
 	{if $field.type == 'hidden'}
-	<input type="hidden" name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" />
+	<input type="hidden" name="{$key}" value="{$item[$key]}" lay-verify="{$field.verify}" />
 	{else}
 		<div class="layui-form-item">
 			<label class="layui-form-label">{if $field.verify == 'required'}<span class="promit">*</span>{/if}{$field.title}：</label>
 			<div class="layui-input-block" {if $field.width}style="width: {$field.width}%;"{/if}>
 				{if $field.type == 'radio'}
 					{foreach from=$field.options item=option}
-					<input type="radio" name="{$field.field}" value="{$option.value}" title="{$option.title}" {if $option.value == $item[$field.field]}checked{/if} />
+					<input type="radio" name="{$key}" value="{$option.value}" title="{$option.title}" {if $option.value == $item[$key]}checked{/if} />
 					{/foreach}
 				{elseif $field.type == 'checkbox'}
 					{foreach from=$field.options item=option}
-						<input type="checkbox" name="{$field.field}" value="{$option.value}" title="{$option.title}" />
+						<input type="checkbox" name="{$key}" value="{$option.value}" title="{$option.title}" />
 					{/foreach}
 				{elseif $field.type == 'select'}
-					<select name="{$field.field}" lay-verify="required">
+					<select name="{$key}" lay-verify="required">
 						<option value=""></option>
 						{foreach from=$field.options item=option}
-						<option value="{$option.value}" {if $option.value==$item[$field.field]}selected{/if}>{$option.title}</option>
+						<option value="{$option.value}" {if $option.value==$item[$key]}selected{/if}>{$option.title}</option>
 						{/foreach}
 					</select>
 				{elseif $field.type == 'textarea'}
-					<textarea name="{$field.field}" class="layui-textarea" lay-verify="{$field.verify}">{$item[$field.field]}</textarea>
+					<textarea name="{$key}" class="layui-textarea" lay-verify="{$field.verify}">{$item[$key]}</textarea>
 				{elseif $field.type == 'upload'}
-					<button type="button" class="layui-btn layui-upload" field-name="{$field.field}" data-size="100" data-exts="" data-accept=""><i class="layui-icon">&#xe61f;</i>上传文件</button>
+					<button type="button" class="layui-btn layui-upload" field-name="{$key}" data-size="100" data-exts="" data-accept=""><i class="layui-icon">&#xe61f;</i>上传文件</button>
 					<div class="layui-inline layui-word-aux">{if $field.size}{$field.size}以内{/if}</div>
-					<input type="hidden" name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" id="uploaded-file">
+					<input type="hidden" name="{$key}" value="{$item[$key]}" lay-verify="{$field.verify}" id="uploaded-file">
 					<br>
-					<span id="uploaded-link"><a href="/uploads/{$item[$field.field]}" target="_blank">{$item[$field.field]}</a></span>
+					<span id="uploaded-link"><a href="/uploads/{$item[$key]}" target="_blank">{$item[$key]}</a></span>
 				{elseif $field.type == 'tpl'}
 					<?php echo $this->_var['field']['tpl']($this->_var['item']); ?>
 				{else}
-					<input type="{$field.type}"  name="{$field.field}" value="{$item[$field.field]}" lay-verify="{$field.verify}" class="layui-input">
+					<input type="{$field.type}"  name="{$key}" value="{$item[$key]}" lay-verify="{$field.verify}" class="layui-input">
 				{/if}
 			</div>
 		</div>

@@ -38,11 +38,22 @@
         var $ = layui.jquery;
         var table = layui.table;
         var form = layui.form;
+        var cols = [[
+            {foreach from=$template.fields key=key item=field}
+            {if $field == 'id'}{field: 'id', title: 'ID', width:60},
+            {elseif $field == 'create_time'}{field: 'create_time', title: '创建时间',width:180},
+            {elseif $field == 'operator'}{fixed: 'right',title: '操作', width:120, toolbar: '#operator'},
+            {elseif $key == 'operator'}{fixed: 'right',title: '操作', width:120, toolbar: '{$field}'},
+            {else}
+            {field: '{$field}', title: '<?php echo $this->_var['fields'][$this->_var['field']]['title']; ?>'},
+            {/if}
+            {/foreach}
+        ]];
         var tableIns = table.render({
             elem: '#data-list'
             ,url: '?' //数据接口
             ,page: true //开启分页
-            ,cols: {$template.cols}
+            ,cols: cols
         });
 
         //搜索
@@ -98,8 +109,6 @@
 
     });
 </script>
-
-
 
 
 {$template.html}
