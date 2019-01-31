@@ -22,14 +22,14 @@ class Smarty {
 
 	var $_temp_key	  = array();  // 临时存放 foreach 里 key 的数组
 	var $_temp_val	  = array();  // 临时存放 foreach 里 item 的数组
-	
+
 	var $js_path;
 	var $css_path;
 	var $base_path;
 	var $base_url;
-	
+
 	var $output = '';
-	
+
 	function __construct()
 	{
 		$this->Smarty();
@@ -80,7 +80,7 @@ class Smarty {
 	{
 		return $this->compile_dir . '/' . trim(str_replace(dirname(APPPATH),'',$filename),'/').'.php';
 	}
-	
+
 	/**
 	 * 显示页面函数
 	 *
@@ -223,7 +223,7 @@ class Smarty {
 		{
 			error_reporting($this->_errorlevel);
 		}
-		
+
 		return $out; // 返回html数据
 	}
 
@@ -273,7 +273,7 @@ class Smarty {
 		{
 			$this->_current_file = $filename;
 			$source = $this->fetch_str(file_get_contents($filename));
-			
+
 			if (file_put_contents($name, $source, LOCK_EX) === false)
 			{
 				trigger_error('can\'t write:' . $name);
@@ -316,7 +316,7 @@ class Smarty {
 	 * @return  bool
 	 */
 	function is_cached($filename, $cache_id = '')
-	{		
+	{
 		$template_dir = $this->template_dir;
 		if ($filename{0} == '@' || $filename{0} == '/')
 		{
@@ -501,7 +501,7 @@ class Smarty {
 					break;
 
 				case 'insert_styles':
-					
+
 					$t = $this->get_para(substr($tag, 11), 0);
 					return '<?php echo $this->smarty_insert_styles(' . $this->make_array($t) . '); ?>';
 					break;
@@ -549,7 +549,7 @@ class Smarty {
 
 					return '<?php echo $this->html_radios(' . $this->make_array($t) . '); ?>';
 					break;
-					
+
 				case 'html_checkboxs':
 					$t = $this->get_para(substr($tag, 12), 0);
 
@@ -581,7 +581,7 @@ class Smarty {
 	 */
 	function get_val($val)
 	{
-		
+
 		if (strrpos($val, '[') !== false)
 		{
 			// $val = preg_replace("/\[([^\[\]]*)\]/eis", "'.'.str_replace('$','\$','\\1')", $val);
@@ -619,77 +619,11 @@ class Smarty {
 			foreach ($moddb AS $key => $mod)
 			{
 				$s = explode(':', $mod,2);
-				switch ($s[0])
-				{
-					case 'escape':
-						$s[1] = trim($s[1], '"');
-						if ($s[1] == 'html')
-						{
-							$p = 'htmlspecialchars(' . $p . ')';
-						}
-						elseif ($s[1] == 'tohtml') {
-							$p = 'htmlspecialchars_decode(' . $p . ')';
-						}
-						elseif ($s[1] == 'url')
-						{
-							$p = 'urlencode(' . $p . ')';
-						}
-						elseif ($s[1] == 'decode_url')
-						{
-							$p = 'urldecode(' . $p . ')';
-						}
-						elseif ($s[1] == 'quotes')
-						{
-							$p = 'addslashes(' . $p . ')';
-						}
-						else
-						{
-							$p = 'htmlspecialchars(' . $p . ')';
-						}
-						break;
-
-					case 'nl2br':
-						$p = 'nl2br(' . $p . ')';
-						break;
-
-					case 'default':
-						$s[1] = $s[1]{0} == '$' ?  $this->get_val(substr($s[1], 1)) : "'$s[1]'";
-						$p = 'empty(' . $p . ') ? ' . $s[1] . ' : ' . $p;
-						break;
-
-					case 'truncate':
-						$p = 'sub_str(' . $p . ",$s[1])";
-						break;
-
-					 case 'join':
-						$s[1] = trim($s[1], '"');
-						$p = $p . '.' . $s[1];
-						break;
-
-					case 'strip_tags':
-						$p = 'strip_tags(htmlspecialchars_decode(' . $p . '))';
-						break;
-					case 'dateformat':
-						$s[1] = trim($s[1], '"');
-						$p = 'date("'.$s[1].'", '.$p.')';
-						break;
-					case 'homepage_url':
-						$s[1] = trim($s[1], '"');
-						$p = 'format_homepage_url('.$p.', "'.$s[1].'")';
-						break;
-					case 'item_url'://项目或资金链接
-						$s[1] = $s[1]{0} == '$' ?  $this->get_val(substr($s[1], 1)) : "'$s[1]'";
-						$p = 'format_item_url('.$p.', '.$s[1].')';
-						break;
-					default:
-						if (function_exists($s[0]))
-						{
-							$s[1] = trim($s[1], '"');
-					   	 	$p = $s[0].'('.$p.')';
-						}
-						# code...
-						break;
-				}
+                if ($s[1]) {
+                    $p = $s[0].'('.$p.','.$s[1].')';
+                } else {
+                    $p = $s[0].'('.$p.')';
+                }
 			}
 		}
 
@@ -1004,13 +938,13 @@ class Smarty {
 		$_ref = $indexes[0];
 		switch ($_ref)
 		{
-			
+
 			case 'define':
 				$compiled_ref = $indexes[1];
 				$indexes = array();
 				return $compiled_ref;
 				break;
-				
+
 			case 'now':
 				$compiled_ref = 'time()';
 				break;
@@ -1123,7 +1057,7 @@ class Smarty {
 				}
 				else
 				{
-					
+
 					if (isset($this->libs[$val]))
 					{
 						$src = $this->libs[$val];
@@ -1155,18 +1089,18 @@ class Smarty {
 			{
 				$scripts[] = $val;
 				$js = $this->js_path.  $val . '/jquery.'.$val. '.js';
-				$css = $this->js_path. $val . '/jquery.'.$val. '.css';				
+				$css = $this->js_path. $val . '/jquery.'.$val. '.css';
 				#if (file_exists($this->base_path.$js))
 				$str .= '<script type="text/javascript" src="'.$js.'"></script>' . "\r\n";
 				#if (file_exists($this->base_path.$css))
 				$str .= '<link rel="stylesheet" type="text/css" href="' . $css . '" />' . "\r\n";
-				
+
 			}
 		}
 
 		return $str;
 	}
-	
+
 	/**
 	 * 生成样式
 	 *
@@ -1212,7 +1146,7 @@ class Smarty {
 	function smarty_prefilter_preCompile($source)
 	{
 		$file_type = strtolower(strrchr($this->_current_file, '.'));
-		
+
 		/* 替换文件编码头部 */
 		if (strpos($source, "\xEF\xBB\xBF") !== FALSE)
 		{
@@ -1243,7 +1177,7 @@ class Smarty {
 	{
 		return $this->stripvtag('<?php '.$matches[1].' ?>');
 	}
-	
+
 	function insert_mod($name) // 处理动态内容
 	{
 		list($fun, $para) = explode('|', $name);
@@ -1407,12 +1341,12 @@ class Smarty {
 
 		return $out;
 	}
-	
+
 	function html_checkboxs($arr) {
 		$name	= $arr['name'];
 		$checked = isset($arr['checked']) ? $arr['checked'] : array();
 		$options = $arr['options'];
-		
+
 		$out = '';
 		foreach ($options AS $key => $val)
 		{
@@ -1554,7 +1488,7 @@ class Smarty {
 
 		return $str;
 	}
-	
+
 }
 
 ?>
