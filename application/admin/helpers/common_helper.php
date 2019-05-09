@@ -68,10 +68,10 @@ function dbCase($case,$index){
  * @param $configKey
  * @param string $type
  * @param string $name
- * @param string $defaultOption
+ * @param string $default
  * @return string
  */
-function dbCaseForm($case,$configKey,$type='select',$name='',$defaultOption='请选择'){
+function dbCaseForm($case,$configKey,$type='select',$name='',$default=null){
     $CI =& get_instance();
     $CI->load->config('dbcase');
     $caseArr = $CI->config->config[$configKey];
@@ -83,13 +83,13 @@ function dbCaseForm($case,$configKey,$type='select',$name='',$defaultOption='请
     //下拉列表
     if($type == 'select') {
         $result = '<select name="'.$name.'" lay-filter="'.$name.'" class="form-item" >';
-        $result .= '<option value="">'.$defaultOption.'</option>';
+        $result .= '<option value="">请选择</option>';
         foreach ($caseArr as $key=>$value) {
             $arr = explode('|',$value);
             $value = $arr[0];
             $color = $arr[1];
             $selected = ($key == $case) ? 'selected':'';
-            if($case == null) $selected = '';
+            if($case == null and $key != $default) $selected = '';
             $result .= '<option value="'.$key.'" color="'.$color.'" '.$selected.'>'.$value.'</option>';
         }
         $result .= '</select>';
@@ -113,7 +113,7 @@ function dbCaseForm($case,$configKey,$type='select',$name='',$defaultOption='请
 
 //将数据库中的数据转换成下拉列表
 function dbFormSelect($cur,$name,$table,$valueField,$contentField,$where=[],$defaultOption='请选择'){
-    $list = M($table)->getList($where,"$valueField,$contentField");
+    $list = D($table)->getList($where,"$valueField,$contentField");
 
     $result = '<select name="'.$name.'" lay-filter="'.$name.'" class="form-item" >';
     $result .= '<option value="">'.$defaultOption.'</option>';

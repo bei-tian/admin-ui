@@ -11,7 +11,9 @@
     url('../font/iconfont.woff') format('woff'),
     url('../font/iconfont.ttf') format('truetype');
 }
-
+a {
+    cursor: pointer;
+}
 .adminui-icon{
     font-family:"adminui-icon" !important;
     font-size: 18px;

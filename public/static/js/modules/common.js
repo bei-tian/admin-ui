@@ -21,6 +21,10 @@ layui.define(['layer','form'], function (exports) {
         return false;
     });
 
+    //添加标签页
+    $(".add-tab").click(function () {
+        parent.addTab(this, $(this).attr('title'), $(this).data('url'));
+    });
 
     //删除
     $(".delete").click(function () {
