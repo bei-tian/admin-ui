@@ -51,15 +51,8 @@
     {/foreach}
     </tbody>
 </table>
-<div class="adminui-page" id="page" count="{$count}"></div>
-
-
-<script type="text/javascript">
-    layui.use(['list'], function(){
-
-    });
-
-</script>
+<div class="adminui-page" id="page" count="{$count}" curr="{$smarty.get.page}"></div>
+<script type="text/javascript">layui.use('list');</script>
 
 {include file="../public/footer.html"}
 
