@@ -5,6 +5,7 @@ layui.define(['layer', 'element', 'laypage'], function (exports) {
         elem: 'page'
         ,count: $page.attr('count')
         ,curr: $page.attr('curr')
+        ,layout: ['count', 'prev', 'page', 'next','skip']
         ,jump: function(obj, first) {
             //首次不执行
             if (!first) {
