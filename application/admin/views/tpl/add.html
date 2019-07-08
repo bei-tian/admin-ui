@@ -31,7 +31,7 @@
     <div class="layui-form-item on-selected">
         <label class="layui-form-label">图片</label>
         <div class="layui-input-block" style="width:80%">
-            <input type="hidden" name="img" id="uploaded-file"/>
+            <input type="hidden" name="img" value="{$item.pic}" id="uploaded-file"/>
             {include file="../public/upload.html"}
             <span id="uploaded-link"><a href="/uploads/{$item.img}" target="_blank">{$item.img}</a></span>
         </div>
