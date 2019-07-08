@@ -1,0 +1,50 @@
+{include file="../public/header.html"}
+
+<form class="layui-form " method="post">
+    <input type="hidden" name="id" value="{$item.id}">
+
+
+    <div class="layui-form-item ">
+
+        <label class="layui-form-label layui-input-required">标题</label>
+        <div class="layui-input-block" style="width:50%">
+            <input type="text" name="title" value="{$item.title}" lay-verify="required" autocomplete="off"
+                   class="layui-input form-item">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item on-selected">
+
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block" style="width:80%">
+            <textarea  name="content" class="xheditor" style="width: 80%; height: 300px;">{$item.content}</textarea>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item on-selected">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-block" style="width:80%">
+            <input type="hidden" name="img" id="uploaded-file"/>
+            {include file="../public/upload.html"}
+            <span id="uploaded-link"><a href="/uploads/{$item.img}" target="_blank">{$item.img}</a></span>
+        </div>
+    </div>
+    <br>
+
+    <div class="layui-form-item ">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+        </div>
+    </div>
+</form>
+
+{include file="../public/footer.html"}
+
+<script type="text/javascript" src="/static/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/static/lib/xheditor/xheditor-1.2.2.min.js"></script>
+<script type="text/javascript" src="/static/lib/xheditor/zh-cn.js"></script>
+<script>
+    $('.xheditor').xheditor({upImgUrl:"/upload/xheditor",upImgExt:"jpg,jpeg,gif,png"});
+</script>
