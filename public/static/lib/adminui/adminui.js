@@ -99,7 +99,6 @@ layui.use(['layer', 'element', 'util'], function () {
     //切换选项卡时，同步导航栏状态
     element.on('tab(card)', function(){
         var key = $(this).find('span').attr('key');
-        $('.admin-top-nav li').eq(key.split('-')[0]).click();
         $(".layui-nav-child dd").removeClass('layui-this');
         $("dd[key='"+key+"']").addClass('layui-this');
     });
