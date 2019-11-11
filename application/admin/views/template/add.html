@@ -25,6 +25,13 @@
 					</select>
 				{elseif $field.type == 'textarea'}
 					<textarea name="{$key}" class="layui-textarea" lay-verify="{$field.verify}">{$item[$key]}</textarea>
+				{elseif $field.type == 'editor'}
+					<textarea  name="{$key}" class="xheditor" style="width: 90%; height: 300px;">{$item[$key]}</textarea>
+					<script type="text/javascript" src="/static/lib/xheditor/xheditor-1.2.2.min.js"></script>
+					<script type="text/javascript" src="/static/lib/xheditor/zh-cn.js"></script>
+					<script>
+						$('.xheditor').xheditor({upImgUrl:"/upload/xheditor",upImgExt:"jpg,jpeg,gif,png"});
+					</script>
 				{elseif $field.type == 'upload'}
 					<button type="button" class="layui-btn layui-upload" field-name="{$key}" data-size="100" data-exts="" data-accept=""><i class="layui-icon">&#xe61f;</i>上传文件</button>
 					<div class="layui-inline layui-word-aux">{if $field.size}{$field.size}以内{/if}</div>
