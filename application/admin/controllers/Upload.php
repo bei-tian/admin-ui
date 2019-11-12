@@ -54,6 +54,25 @@ class Upload extends Common
         echo json_encode($res);
     }
 
+    //附件上传
+    function attach() {
+        $base = './uploads/xheditor/';
+        preg_match('/attachment;\s+name="(.+?)";\s+filename="(.+?)"/i',$_SERVER['HTTP_CONTENT_DISPOSITION'],$info);
+        $fileName = $info[2];
+        $ext = strtolower(end(explode('.', $fileName)));
+        if (!in_array($ext, ['zip','rar','txt','doc','docx','xls','xlsx'])) {
+            $this->err('不允许上传的文件格式');
+        }
+
+        $date = date("Y-m-d");
+        @mkdir($base . $date, 0777);
+        $filePath = $base . $date . "/" . date('His') . "." . $ext;
+        file_put_contents($filePath,file_get_contents("php://input"));
+        $res['err'] = '';
+        $res['msg'] = '!'.str_replace('./', '/', $filePath).'||'.$fileName;
+        echo json_encode($res);
+    }
+
     private function err($msg) {
         $res['code'] = -1;
         $res['err'] = $msg;
