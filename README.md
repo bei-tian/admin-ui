@@ -7,7 +7,11 @@
 
 用户名和密码都为：admin
 
-# 效果图
-![image](http://admin-ui.lin-xiaoji.com/1.png)
+# 部署
+```
+chmod 777 public/uploads -R
+```
 
-![image](http://admin-ui.lin-xiaoji.com/2.png)
+
+
+
