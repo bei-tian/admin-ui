@@ -5,14 +5,16 @@ class Upload extends Common
 {
     function index()
     {
-
-
-        $base = './uploads/';
+        $type = $this->get('type', 'images');
+        $fileName = $this->get('fileName');
+        $path = './uploads/';
+        $base = $path.$type.'/';
+        @mkdir($base, 0777);
         if (@$_FILES['file']['size'] < 5) {
             $this->err('未选择文件');
         }
         $ext = strtolower(end(explode('.', $_FILES['file']['name'])));
-        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif'])) {
+        if (!in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'mp3', 'pdf'])) {
             $this->err('不允许上传的文件格式');
         }
 
@@ -24,11 +26,18 @@ class Upload extends Common
         $date = date("Y-m-d");
         @mkdir($base . $date, 0777);
 
-        $filePath = $base . $date . "/" . date('His') . "." . $ext;
+        if (empty($fileName)) {
+            $filePath = $base . $date . "/" . date('His') . "." . $ext;
+        } elseif ($fileName == 'old') {
+            $filePath = $base . $date . "/" . $_FILES['file']['name'];
+        } else {
+            $filePath = $base . $date . "/" . $fileName;
+        }
+
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
             $res['code'] = 1;
             $res['msg'] = '';
-            $res['src'] = str_replace($base, '', $filePath);
+            $res['src'] = str_replace($path, '', $filePath);
             echo json_encode($res);
         } else {
             $this->err('文件上传失败');
