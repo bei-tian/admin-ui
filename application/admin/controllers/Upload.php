@@ -37,6 +37,7 @@ class Upload extends Common
         if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
             $res['code'] = 1;
             $res['msg'] = '';
+            $res['filename'] = $_FILES['file']['name'];
             $res['src'] = str_replace($path, '', $filePath);
             echo json_encode($res);
         } else {
