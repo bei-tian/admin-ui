@@ -72,12 +72,13 @@ layui.use(['layer', 'element', 'util'], function () {
         // 大于0就是有该选项卡了
         if (flag > 0) {
             id = flag;
+            $(document).find('#ifr-'+id).attr('src', src);
         } else {
             if (src) {
                 //新增
                 element.tabAdd(card, {
                     title: '<span key="'+$(elem).attr('key')+'">' + title + '</span>'
-                    , content: '<iframe src="' + src + '" frameborder="0"></iframe>'
+                    , content: '<iframe id="ifr-'+id+'" src="' + src + '" frameborder="0"></iframe>'
                     , id: id
                 });
                 // 关闭弹窗
