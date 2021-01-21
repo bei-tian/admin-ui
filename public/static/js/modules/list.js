@@ -14,7 +14,7 @@ layui.define(['layer', 'element', 'laypage'], function (exports) {
                 if (location.search) {
                     newUrl = arr[0] + '&page=' + obj.curr;
                 }
-                newUrl = newUrl.replace('??', '?').replace('?&', '&').replace('&&', '&');
+                newUrl = newUrl.replace('??', '?').replace('?&', '?').replace('&&', '&');
                 location.href = newUrl;
             }
         }
