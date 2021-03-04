@@ -3,7 +3,7 @@
     <form class="layui-form">
         <div class="layui-inline">
             <div class="layui-input-inline">
-                <input type="text" class="layui-input searchVal" placeholder="标题" name="title-like" value="{$smarty.get.title-like}" />
+                <input type="text" class="layui-input searchVal" placeholder="标题" name="title-like" value="{$get.title-like}" />
             </div>
             <button class="layui-btn search_btn" type="submit"><i class="layui-icon">&#xe615;</i>搜索</button>
             <a class="layui-btn btn-add btn-default layer-open"   title="添加" data-url="{$base_url}/add"><i class="layui-icon">&#xe654;</i>添加</a>
@@ -37,7 +37,7 @@
     {/foreach}
     </tbody>
 </table>
-<div class="adminui-page" id="page" count="{$count}" curr="{$smarty.get.page}"></div>
+<div class="adminui-page" id="page" count="{$count}" curr="{$get.page}"></div>
 <script type="text/javascript">layui.use('list');</script>
 
 {include file="../public/footer.html"}

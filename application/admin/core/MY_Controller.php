@@ -13,6 +13,7 @@ class Common extends MY_Controller {
 		parent::__construct();
 
         $this->view->assign('base_url',  $this->router->directory.$this->router->fetch_class());
+        $this->view->assign('get',  $this->get());
 	}
 
 	function display($view='',$data=[]) {

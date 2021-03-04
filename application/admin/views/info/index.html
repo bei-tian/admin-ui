@@ -6,15 +6,15 @@
                 <select name="cate_id" lay-verify="required">
                     <option value="">选择分类</option>
                     {foreach from=$cate item=cate}
-                    <option value="{$cate.id}" disabled {if $cate.id== $smarty.get.cate_id}selected{/if}>{$cate.name}</option>
+                    <option value="{$cate.id}" disabled {if $cate.id== $get.cate_id}selected{/if}>{$cate.name}</option>
                     {foreach from=$cate.sub item=subCate}
-                    <option value="{$subCate.id}" {if $subCate.id== $smarty.get.cate_id}selected{/if}>   　 {$subCate.name}</option>
+                    <option value="{$subCate.id}" {if $subCate.id== $get.cate_id}selected{/if}>   　 {$subCate.name}</option>
                     {/foreach}
                     {/foreach}
                 </select>
             </div>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input searchVal" placeholder="标题" name="title-like" value="{$smarty.get.title-like}" />
+                <input type="text" class="layui-input searchVal" placeholder="标题" name="title-like" value="{$get.title-like}" />
             </div>
             <button class="layui-btn search_btn" type="submit"><i class="layui-icon">&#xe615;</i>搜索</button>
             <a class="layui-btn btn-add btn-default layer-open"   title="添加" data-url="/info/add"><i class="layui-icon">&#xe654;</i>添加</a>
@@ -51,7 +51,7 @@
     {/foreach}
     </tbody>
 </table>
-<div class="adminui-page" id="page" count="{$count}" curr="{$smarty.get.page}"></div>
+<div class="adminui-page" id="page" count="{$count}" curr="{$get.page}"></div>
 <script type="text/javascript">layui.use('list');</script>
 
 {include file="../public/footer.html"}
