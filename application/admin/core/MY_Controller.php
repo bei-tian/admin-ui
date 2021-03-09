@@ -124,12 +124,6 @@ class Curd extends Common
             $conf['startFunc']($data);
         }
 
-        //额外数据|二维数组
-        if ($conf['extra_data']) {
-            $extra_data = $this->extra_data($conf['extra_data']);
-            $data = array_merge($data, $extra_data);
-        }
-
 
         //自定义表名
         if ($conf['tableName']) {
@@ -291,17 +285,6 @@ class Curd extends Common
             $conf['endFunc']($data);
         }
 
-        /*
-		 * 使用公共模板生成列表页
-		   'template' => [
-                'cols'=>'', //layui table的表头，
-		        'area' => ['500px','300px'], //添加数据弹窗大小
-		        'searchHtml'=>'', //搜索表单插入额外html
-                'html'=>'', //附加自定义html，可以加入laytpl模板、js，引入文件, 也可载入文件$this->load->view('fx/setting/level_rate.html', '', TRUE)
-                'search'=>'hide', //是否隐藏搜索栏
-                'add'=>'hide', //是否隐藏添加按钮
-            ]
-		*/
         if($conf['template']) {
             $data['template'] = $conf['template'];
             if ($this->input->is_ajax_request()) {
@@ -381,23 +364,6 @@ class Curd extends Common
             $conf['endFunc']($data);
         }
 
-        /*
-             * 使用公共模板生成表单页
-               'template' => [
-                    'action'=> '/XXX/save', //表单提交地址
-                    'fields'=> [
-                        ['field'=>'name','title'=>'名称','verify'=>'required','type'=>'text'],
-                        ['field'=>'status','title'=>'状态','verify'=>'required','type'=>'radio','options'=>[
-                            ['value'=>'1','title'=>'启用'],
-                            ['value'=>'0','title'=>'停用']
-                        ]],
-                        ['title'=>'模板名','type'=>'tpl','tpl'=>function(&$item) { //自定义模板，$item为表单数据
-                            return '<input type="text"  name="test-demo" value="'.$item['name'].'"  class="layui-input">'; //
-                        }],
-                        //支持类型，text,textarea,hidden,upload,radio,checkbox,select,tpl
-                    ]
-                ]
-            */
         if($conf['template']) {
             $data['template'] = $conf['template'];
             if(!$data['template']['action']) {
@@ -417,18 +383,7 @@ class Curd extends Common
             $this->conf['save']['startFunc']($post);
         }
 
-        /*
-        //去掉关联表的字段 *二维数组*
-        [
-            ['plat_headhunter_contact'=> [
-                                            'FK'=>'id',   关联主表id的字段
-                                            'fields'=>[
-                                                        'f_name',   相关字段
-                                                       ]
-                                        ],
-            ]
-        ]
-        */
+
         $relate_data = [];
         if ($this->conf['save']['relateTable']) {
             foreach ($this->conf['save']['relateTable'] as $arr) {
@@ -522,29 +477,6 @@ class Curd extends Common
     }
 
 
-    /**
-     * 获取其它额外数据的函数
-     * @param $config
-     * @return array
-     */
-    protected function extra_data($config) {
-        $extra_data = [];
-        foreach ($config as $arr) {
-            if ($arr['table']) {
-                $where = $arr['where'] ? $arr['where'] : [];
-
-                $extra_data[$arr['table']] = $this->db
-                    ->from($arr['table'])
-                    ->select($arr['field'])
-                    ->where($where)
-                    ->order_by($arr['order'])
-                    ->limit($arr['limit'])
-                    ->get()
-                    ->result_array();
-            }
-        }
-        return $extra_data;
-    }
 }
 
 
