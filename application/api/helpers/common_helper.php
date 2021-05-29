@@ -29,17 +29,15 @@ function M($table){
 
 /**
  * 快速获取数据库中某个表中的指定字段的值
- * 主要用于模板中单个值关联查找，避免连表
  * @param $id
  * @param $table
  * @param $field
  * @return mixed
  */
-function getValue($id,$table,$field,$idName='id') {
-    $result = D($table)->getOne([$idName=>$id],$field);
+function getValue($id,$table,$field) {
+    $result = D($table)->getOne(['id'=>$id],$field);
     return $result[$field];
 }
-
 
 
 function configItem($key,$configFile='') {
@@ -48,4 +46,27 @@ function configItem($key,$configFile='') {
         $CI->load->config($configFile);
     }
     return $CI->config->item($key);
+}
+
+
+function success($data=[]){
+    $ret['code'] = 200;
+    $ret['data'] = $data;
+    setHeader();
+    $out = json_encode($ret,JSON_UNESCAPED_SLASHES);
+    echo $out;
+    die;
+}
+
+function error($msg, $code = 500){
+    $ret['code'] = $code;
+    $ret['msg'] = $msg;
+    setHeader();
+    echo json_encode($ret);
+    die;
+}
+
+function setHeader() {
+    header("Access-Control-Allow-Origin: *");
+    header('content-type: application/json;charset=utf-8');
 }
