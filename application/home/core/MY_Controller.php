@@ -53,35 +53,6 @@ class Common extends MY_Controller {
 	    return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
 
-    //保存成功，关闭弹窗,并刷新父窗口
-    function saveOk() {
-        echo '<script>var $ = top.layui.jquery;$(".layui-show iframe")[0].contentWindow.location.reload();top.layui.layer.closeAll();</script>';
-        exit();
-    }
-
-    function success($data=[]){
-        $ret['code'] = 200;
-        $ret['data'] = $data;
-        $out = json_encode($ret,JSON_UNESCAPED_SLASHES);
-        echo $out;
-        die;
-    }
-
-    function error($msg){
-        if (is_numeric($msg)) {
-            $code = $msg;
-            $this->config->load('error_code');
-            $error_code = $this->config->item('error_code');
-            $ret['code'] = $code;
-            $ret['msg'] = $error_code[$code];
-        } else {
-            $ret['code'] = 500;
-            $ret['msg'] = $msg;
-        }
-        echo json_encode($ret);
-        die;
-    }
-
 }
 
 
